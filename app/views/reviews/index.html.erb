@@ -3,16 +3,17 @@
 <ul class="reviews">
   <% @reviews.each do |review| %>
     <li>
-      <%= pluralize(review.stars, 'star') %>
-      <p>
-        <%= review.name %>
-        <span class="date">
-          <%= time_ago_in_words(review.created_at) %> ago
-        </span>
-      </p>
-      <p>
-        <%= review.comment %>
-      </p>
+        <%= render "shared/stars", percent: review.stars_as_percent %>
+        <%= pluralize(review.stars, 'star') %>
+        <p>
+            <%= review.name %>
+            <span class="date">
+                <%= time_ago_in_words(review.created_at) %> ago
+            </span>
+        </p>
+        <p>
+            <%= review.comment %>
+        </p>
     </li>
   <% end %>
 </ul>
