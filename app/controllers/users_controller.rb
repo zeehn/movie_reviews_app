@@ -15,6 +15,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save 
+            session[:user_id] = @user.id 
             redirect_to @user, notice: 'Thanks for signing up!'
         else 
             render :new 
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
 
         if @user.destroy 
+            session[:user_id] = nil 
             redirect_to movies_url, alert: 'Account successfully delelted!'
         end
     end
