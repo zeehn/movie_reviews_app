@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'movies#index'
   resources :movies do 
     resources :reviews
+    resources :favorites, only: [:create, :destroy]
   end
   
   resources :users 
